@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AspNetCore.Controllers;
 
-//using Serilog;
+using Serilog;
 
 [ApiController]
 [Route("[controller]")]
@@ -27,7 +27,7 @@ public class WeatherForecastController : ControllerBase
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
-        //Log.Error("HEY");
+        Log.Error("HEY");
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateTime.Now.AddDays(index),
