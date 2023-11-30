@@ -10,3 +10,11 @@ Install devcontainer and pain of Aspnetcore projects, one built with `dotnet bui
 In this increment we can build or run the non-bazel project with `dotnet build Weathernobazel/Weathernobazel.csproj` or `dotnet run --project Weathernobazel/Weathernobazel.csproj` respectively.
 
 We can build or run the bazel project with `bazel build //Weatherwithbazel:weatherwithbazel` or `bazel build //Weatherwithbazel:weatherwithbazel`.
+
+
+Phase 2:
+Include the serilog dependency in the non-bazel project, resolved through nuget. Make the app say 'HEY' when you send a request.
+
+(Add serilog with `dotnet add package Serilog.AspNetCore` from with the `Weathernobazel` directory. Uncomment serilog lines.)
+
+
