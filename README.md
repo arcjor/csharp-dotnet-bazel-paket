@@ -4,6 +4,7 @@ A repository which walks through the configuration of a project with bazel and p
 The v0.12.0 release was selected because originally the default nuget path was evaluated, which is not present in the next release.
 In a latter increment the project will be updated to depend on latest.
 
+
 Phase 1:
 Install devcontainer and pain of Aspnetcore projects, one built with `dotnet build` and one with bazel. Neither use paket for dependencies yet.
 
@@ -18,3 +19,20 @@ Include the serilog dependency in the non-bazel project, resolved through nuget.
 (Add serilog with `dotnet add package Serilog.AspNetCore` from with the `Weathernobazel` directory. Uncomment serilog lines.)
 
 
+Phase 3:
+Switch the non-bazel weather app to use paket as per the official steps from https://fsprojects.github.io/Paket/
+
+Commands:
+`dotnet new tool-manifest`
+`dotnet tool install paket` (Adds paket to `.config/dotnet-tools.json`)
+`dotnet tool restore` (Makes the `paket` command available)
+`dotnet paket init` (`Creates the paket.dependencies file`)
+Create `build.sh`
+`chmod 755 build.sh`
+Add Serilog.AspNetCore to `paket.dependencies`
+Create `paket.references` in `Weathernobazel` and add Serilog.AspNetCore
+`dotnet paket install`
+Remove the old nuget based reference to serilog from `Weathernobazel/Weathernobazel.csproj`
+`./build.sh Weathernobazel/Weathernobazel.csproj`
+
+Now when we `dotnet run --project Weathernobazel/Weathernobazel.csproj` we are using a project built with paket based dependencies.
