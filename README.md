@@ -36,3 +36,13 @@ Remove the old nuget based reference to serilog from `Weathernobazel/Weathernoba
 `./build.sh Weathernobazel/Weathernobazel.csproj`
 
 Now when we `dotnet run --project Weathernobazel/Weathernobazel.csproj` we are using a project built with paket based dependencies.
+
+
+Phase 4:
+Switch the bazel weather app to use paket with paket2bazel as per `https://github.com/bazelbuild/rules_dotnet/blob/v0.12.0/tools/paket2bazel/README.md`
+
+Commands:
+Add the `WORKSPACE` snippet to load paket2bazel_dependencies.
+`mkdir deps`
+`bazel run @rules_dotnet//tools/paket2bazel:paket2bazel.exe -- --dependencies-file $(pwd)/paket.dependencies  --output-folder $(pwd)/deps`
+Add the `WORKSPACE` snippet to load packet.bzl.

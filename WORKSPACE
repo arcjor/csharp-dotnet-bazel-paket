@@ -25,3 +25,11 @@ rules_dotnet_nuget_packages()
 load("//:example_deps.bzl", "example_deps")
 
 example_deps()
+
+load("@rules_dotnet//dotnet:paket2bazel_dependencies.bzl", "paket2bazel_dependencies")
+
+paket2bazel_dependencies()
+
+load("//:deps/paket.bzl", "paket")
+
+paket()
