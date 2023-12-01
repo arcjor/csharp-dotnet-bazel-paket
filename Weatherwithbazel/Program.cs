@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-
+// If we uncomment any of our serilog calls our build will fail because the actual source is not visible.
 //using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);

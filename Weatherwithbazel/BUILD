@@ -20,6 +20,7 @@ csharp_binary(
         "@example_deps//microsoft.netcore.app.ref",
     ],
     deps = [
-        # "@paket.main//serilog.aspnetcore",
+        # We can see that this dep IS resolving at some level because if we typo it then our build will fail.
+        "@paket.main//serilog.aspnetcore",
     ],
 )
